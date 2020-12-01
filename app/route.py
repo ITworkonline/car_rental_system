@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request
 
 from flask_login import login_user, login_required, current_user, logout_user
-from app import app, bcrypt, db
-from app.forms import RegisterForm, LoginForm, ManagerForm
+from app import app, bcrypt, db, mysql
+from app.forms import RegisterForm, LoginForm, ManagerForm, CarForm
 from app.models import User
 
 
@@ -10,6 +10,11 @@ from app.models import User
 @login_required
 def index():
     return render_template('index.html', title='Home')
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -74,5 +79,52 @@ def manager():
 
 
 @app.route('/modify', methods=['GET', 'POST'])
-def empty():
-    return render_template('empty.html')
+def dashboard():
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM cars")
+    info = cur.fetchall()
+    if result > 0:
+        return render_template('dashboard.html', cars=info)
+    else:
+        msg = 'No car Found'
+        return render_template('dashboard.html', msg=msg)
+
+    # Close connection
+    cur.close()
+
+
+# add car into database
+@app.route('/add_car', methods=['GET', 'POST'])
+def add_car():
+    form = CarForm(request.form)
+    if request.method == 'POST' and form.validate():
+        car_type = form.car_type.data
+        car_level = form.car_level.data
+        price = form.price.data
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO cars(car_type, car_level, price) VALUES(%s, %s, %s)", (car_type, car_level, price))
+        mysql.connection.commit()
+        cur.close()
+        flash('Car added', 'success')
+        return redirect(url_for('dashboard'))
+
+    return render_template('add_car.html', form=form)
+
+
+# edit car into database
+@app.route('/edit_car/<string:id>', methods=['GET', 'POST'])
+def edit_car(id):
+    cur = mysql.connection.cursor()
+
+    # Get car by id
+    result = cur.execute("SELECT * FROM cars WHERE id = %s", [id])
+    info = cur.fetchone()
+    cur.close()
+    form = CarForm(request.form)
+    # get the data
+    form.car_type.data = info['car_type']
+    form.car_level.data = info['car_level']
+    form.price.data = info['price']
+    form.availibity.data = info['availibity']
