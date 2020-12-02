@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{% block app_content %}
+      <h1>First, need to check permission</h1>
+    <br>
+        <div class="row">
+            <div class="col-md-6">
+                {% import 'bootstrap/wtf.html' as wtf %}
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+<a href=/ >
+                <button class="btn btn-lg" style="position: absolute; left: 10%; right: 20%; bottom: 10%; height:70px; width:140px">
+                    back </button>
+            </a>
+{% endblock %}

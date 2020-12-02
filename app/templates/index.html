@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block app_content %}
+
+  <h1>Hello, {{ current_user.username }}! Please select your user mode!</h1>
+  <br>
+ <br>
+        <p align="center">
+            <a href=customer >
+                <button class="btn btn-lg" style="height:100px;width:200px">
+                    Customer</button>
+            </a>
+             <br>
+        <br>
+            <a href=manager >
+                <button class="btn btn-lg" style="height:100px;width:200px">
+                    Manager</button>
+            </a>
+        </p>
+
+{% endblock %}
+
+
+

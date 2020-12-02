@@ -44,6 +44,14 @@ class CarForm(FlaskForm):
     price = IntegerField('price', validators= [DataRequired()])
     submit = SubmitField('add in')
 
+class EditForm(FlaskForm):
+    car_type = StringField('car_type', validators=[DataRequired(), length(min=1, max=255)])
+    car_level = StringField('car_level', validators=[DataRequired(), length(min=1, max=100)])
+    price = IntegerField('price', validators=[DataRequired()])
+    availability = StringField('availability', validators=[DataRequired(), length(min=1, max=10)])
+
+    submit = SubmitField('update ')
+
 
 
 

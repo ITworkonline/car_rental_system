@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block app_content %}
+<h1>Here is the total income for this car</h1>
+      <table class="table table-striped">
+    <tr>
+      <th>car_type</th>
+      <th>car_level</th>
+        <th>total price($/4h)</th>
+
+    </tr>
+    {% for car in cars %}
+      <tr>
+        <td>{{car.car_type}}</td>
+        <td>{{car.car_level}}</td>
+          <td>{{car.price}}</td>
+    {%endfor%}
+
+<hr>
+<a href=/statistic>
+                <button class="btn btn-lg" style="position: absolute; left: 10%; right: 20%; bottom: 10%; height:70px; width:140px">
+                    back </button>
+            </a>
+          <h1 class="btn pull-right" style='font-size:20px;'> <b>The total income is</b> ${{counts}}</h1>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+
+{% block app_content %}
+{% if cars %}
+    <h1>Dashboard </h1>
+<hr>
+<table class="table table-striped">
+    <tr>
+      <th>car_type</th>
+      <th>car_level</th>
+        <th>total price($/4h)</th>
+        <th></th>
+    </tr>
+    {% for car in cars %}
+      <tr>
+        <td>{{car.car_type}}</td>
+        <td>{{car.car_level}}</td>
+          <td>{{car.price}}</td>
+
+        <td><a href="/customer/pay/{{car.id}}" class="btn btn-success pull-right">book</a></td>
+{%endfor%}
+          {% else %}
+    <h1>Dashboard</h1>
+          <hr>
+          <div class="'jumbotron text-center">
+              <br>
+              <br>
+        <p class="lead">
+            Oops...There is no more this type of car available at any level.
+            <br>
+            Please go back and select other car type/brand.
+        </p>
+    </div>
+
+    {% endif %}
+          <a href=/customer >
+                <button class="btn btn-lg" style="position: absolute; left: 10%; right: 20%; bottom: 10%; height:70px; width:140px">
+                    back </button>
+            </a>
+{% endblock %}

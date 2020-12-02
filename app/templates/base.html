@@ -1,0 +1,38 @@
+
+{% extends "bootstrap/base.html" %}
+{% block title %}
+    {% if title %}
+    {{title}}| Car rental APP
+    {% else %}
+    Car rental App
+    {% endif %}{% endblock %}
+
+
+
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            {% with messages = get_flashed_messages(with_categories=True)%}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    {% block app_content %}
+    sfaede
+    {% endblock %}
+</div>
+{% endblock %}

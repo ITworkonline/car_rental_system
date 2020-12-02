@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block app_content %}
+
+    {%for car in cars%}
+   <div class="'jumbotron text-center">
+        <h1>Congratulation</h1>
+        <p class="lead">You have successfully booked the {{car.car_type}}</p>
+        <br>
+       <br>
+        <p align="center">
+            <a href=/ >
+                <button class="btn btn-lg" style="height:100px;width:300px">
+                    click here to home page</button>
+            </a>
+        </p>
+    </div>
+    {%endfor%}
+
+{% endblock %}

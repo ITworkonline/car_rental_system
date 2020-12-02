@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<h1>Dashboard <small>You can add and modify the storage of the car</small></h1>
+<br>
+<a class ="btn btn-success" href = '/add_car'>Add Car</a>
+<hr>
+<table class="table table-striped">
+    <tr>
+      <th>car_type</th>
+      <th>car_level</th>
+        <th>price</th>
+        <th>availability</th>
+      <th>create date</th>
+      <th>modification date</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for car in cars %}
+      <tr>
+        <td>{{car.car_type}}</td>
+        <td>{{car.car_level}}</td>
+          <td>{{car.price}}</td>
+          <td>{{car.availability}}</td>
+        <td>{{car.create_date}}</td>
+        <td>{{car.modification_time}}</td>
+        <td><a href="edit_car/{{car.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>
+
+          <form action="{{url_for('delete_car', id=car.id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+<br>
+<br>
+  <a href=/admin >
+                <button class="btn btn-lg" style=" left: 10%; right: 20%; bottom: 10%; height:70px; width:140px">
+                    back </button>
+            </a>
+{% endblock %}

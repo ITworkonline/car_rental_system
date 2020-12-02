@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block app_content %}
+
+  <h1>Booking confirmation</h1>
+  <hr>
+<table class="table table-striped">
+    <tr>
+      <th>car_type</th>
+      <th>car_level</th>
+        <th>total price($/4h)</th>
+        <th></th>
+    </tr>
+            {% for car in cars %}
+      <tr>
+        <td>{{car.car_type}}</td>
+        <td>{{car.car_level}}</td>
+          <td>{{car.price}}</td>
+      </tr>
+
+            {%endfor%}
+</table>
+{% for car in cars %}
+<hr>
+<h1 class="btn pull-right" style='font-size:20px;'> <b>The total price is</b> ${{car.price}}/4h</h1>
+<a href=/customer/{{car.car_type}} >
+                <button class="btn btn-lg" style="position: absolute; left: 10%; right: 20%; bottom: 10%; height:70px; width:140px">
+                    back </button>
+            </a>
+
+<a href=/successful/{{car.id}}>
+    <button class="btn btn-lg btn-success" style="position: absolute; left: 75%; right: 20%; bottom: 10%; height:70px; width:140px">
+                    confirm </button>
+</a>
+
+{%endfor%}
+
+
+
+{% endblock %}
