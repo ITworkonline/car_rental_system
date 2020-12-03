@@ -6,6 +6,4 @@ flask-wtf
 flask-login
 wtforms
 email_validator
-datetime
-
 Flask-MySQLdb
