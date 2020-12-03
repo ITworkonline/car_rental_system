@@ -38,9 +38,11 @@ customer booking page
 ![](https://github.com/ITworkonline/car_rental_system/blob/main/gif/customer.gif)   
  
 
-
+  
+   
+    
 #
-----**Design pattern or ooad item we used:**  decorator, MVC, ORM database
+----**Design pattern or ooad item we used:**  decorator, MVC, ORM database (mentioned in app/route.py about the detail)
 #
 ----**Instruction of running**: We used Pycharm as IDE. All packages are mentioned in requirement.txt. 
 
