@@ -1,5 +1,3 @@
-import datetime
-
 from flask import render_template, flash, redirect, url_for, request
 
 from flask_login import login_user, login_required, current_user, logout_user
@@ -11,7 +9,7 @@ from app.models import User
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html', title='Home')
+    return render_template('index.html')
 
 
 @app.route('/about')
@@ -209,7 +207,6 @@ def successful(id):
     cur.execute("SELECT * FROM cars WHERE id = %s", [id])
     info = cur.fetchall()
     mysql.connection.commit()
-
     return render_template('successful.html', cars=info)
     cur.close()
 

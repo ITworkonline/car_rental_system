@@ -10,3 +10,9 @@ class Config(object):
     #database
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///'+os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    MYSQL_HOST = 'localhost'
+    MYSQL_USER = 'root'
+    MYSQL_PASSWORD = '1130'
+    MYSQL_DB = 'mysql'
+    MYSQL_CURSORCLASS = 'DictCursor'
