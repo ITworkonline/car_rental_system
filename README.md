@@ -7,14 +7,22 @@
 
 ----**File map：**
 > app
->> templates(html)
->> __init__.py
->> models.py
->> form.py
->> route.py
-> config.py
-> requirements.txt
-> run.py 
+>> templates(html). 
+
+>> __init__.py. 
+
+>> models.py. 
+
+>> form.py. 
+
+>> route.py. 
+
+> config.py. 
+
+> requirements.txt. 
+
+> run.py  
+
 
 
 
