@@ -24,7 +24,7 @@
 > run.py  
 
 
-![](test.gif)
+![](https://github.com/ITworkonline/car_rental_system/blob/main/gif/login.gif)
 
 
 
