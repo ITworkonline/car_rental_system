@@ -23,12 +23,22 @@
 
 > run.py  
 
+----**Demo gif:**   
 
-![](https://github.com/ITworkonline/car_rental_system/blob/main/gif/login.gif)
+login page
+![](https://github.com/ITworkonline/car_rental_system/blob/main/gif/login.gif)  
+
+manager operation page  
+![](https://github.com/ITworkonline/car_rental_system/blob/main/gif/manager_page.gif) 
+
+customer booking page  
+![](https://github.com/ITworkonline/car_rental_system/blob/main/gif/customer.gif)   
+ 
 
 
 
-----**Comments:**
+
+
 
 
 
