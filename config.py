@@ -1,3 +1,4 @@
+#define the config for sqlalchemy and mysql
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
