@@ -24,7 +24,7 @@
 > run.py  
 
 
-![](test.gif)
+![](/git/test.gif)
 
 
 
