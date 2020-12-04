@@ -1,12 +1,29 @@
-#learning flask material https://www.youtube.com/watch?v=RWviEK1Si68&list=PLDFBYdF-BxV1G4FBpG1EMyFtbsbZuJOvD
+"""learning flask material https://www.youtube.com/watch?v=RWviEK1Si68&list=PLDFBYdF-BxV1G4FBpG1EMyFtbsbZuJOvD
+ https://www.youtube.com/watch?v=addnlzdSQs4"""
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, login_required, current_user, logout_user
 from app import app, bcrypt, db, mysql
 from app.forms import RegisterForm, LoginForm, ManagerForm, CarForm, EditForm
 from app.models import User
+"""
+Design patterns and ooad items we used:  
+           decorator: "@app.route", "@login_required"
+           MVC: "Model: Mysql, sqlalchemy", 
+                "view: customer, manager's page", 
+                "controller: add, edit, and delete car(manager side), choose and confirm car(customer side)"
+           ORM: "sqlalchemy as user info storage"
+
+"""
+"""In this route.py, we used @app.route as our decorator since it's flask web requirement.
+In addition, we added a login as the decorator. To protect data security and administrative rights, 
+we require users to log in and enter a password before entering any page. In this way, 
+even if the user directly input the corresponding suburl in the url bar, 
+also can not directly enter. """
+
 
 
 #base page
+#example of decorator
 @app.route('/')
 @login_required
 def index():
@@ -30,6 +47,7 @@ def register():
         email = form.email.data
         password = bcrypt.generate_password_hash(form.password.data)#hash to project password
         user = User(username=username, email=email, password=password)
+        #sqlalchemy
         db.session.add(user)
         db.session.commit()
         flash('Congrats, registeration success! Book the car now!', category='success')
